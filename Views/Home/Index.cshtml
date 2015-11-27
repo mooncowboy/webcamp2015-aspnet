@@ -1,14 +1,23 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-
 <div class="row">
     
     @foreach(var meetup in Model) 
     {
-        <div class="col-md-3">
-            <h2>@meetup.Name</h2>
+        <div class="col-md-4">
+            <a href="@meetup.Link %>" target="blank">
+                <div style="width: 360px; height: 205px; overflow: hidden;">
+                    <!-- <img class="img-responsive" src="http://placehold.it/700x400">     -->
+                    <img style="width: 100%" src="@meetup.Image">
+                </div>
+                
+                
+            </a>
+            <h3>
+                    <a href="@meetup.Link %>" target="blank">@meetup.Name</a>
+                </h3>
+            <p>@meetup.SafeDescription.Substring(0, Math.Min(meetup.SafeDescription.Length, 150))</p>
         </div>
     }
 </div>

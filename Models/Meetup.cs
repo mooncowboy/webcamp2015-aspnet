@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using Microsoft.AspNet.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -20,6 +21,14 @@ namespace meetups.Models
 		
 		[JsonProperty("description")]
 		public string Description { get; set; }
+		
+		public string SafeDescription 
+		{ 
+			get 
+			{
+				return Regex.Replace(Description, @"<[^>]+>|&nbsp;", "").Trim();
+			}
+		}
 		
 		public static IEnumerable<Meetup> GetAll(string path) {
 			//var dataDir = AppDomain.CurrentDomain.GetData("DataDirectory");
