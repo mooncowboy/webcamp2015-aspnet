@@ -21,9 +21,9 @@ namespace meetups.Models
 		[JsonProperty("description")]
 		public string Description { get; set; }
 		
-		public static IEnumerable<Meetup> GetAll() {
+		public static IEnumerable<Meetup> GetAll(string path) {
 			//var dataDir = AppDomain.CurrentDomain.GetData("DataDirectory");
-			var jsonText = File.ReadAllText("meetups-lisbon.json");
+			var jsonText = File.ReadAllText(path);
 			var meetupList = JsonConvert.DeserializeObject<IList<Meetup>>(jsonText);
 			return meetupList;
 			
