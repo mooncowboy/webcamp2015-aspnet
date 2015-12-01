@@ -1,3 +1,5 @@
+#!/bin/sh
+
 sudo apt-get update
 
 sudo apt-get install libunwind8 libssl-dev unzip
